@@ -1,0 +1,17 @@
+/* line 4, ../scss/styles.scss */
+.score {
+  width: 250px;
+  height: 250px;
+  font-size: 100px;
+  padding: 80px 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+/* line 12, ../scss/styles.scss */
+.score.red {
+  background-color: red;
+}
+/* line 15, ../scss/styles.scss */
+.score.blue {
+  background-color: blue;
+}

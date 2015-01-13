@@ -1,0 +1,18 @@
+$red: #f00;
+$blue: #00f;
+
+.score {
+	width: 250px;
+	height: 250px;
+	font-size: 100px;
+	padding: 80px 10px;
+	box-sizing: border-box;
+	text-align: center;
+
+	&.red {
+		background-color: $red;
+	}
+	&.blue {
+		background-color: $blue;
+	}
+}
