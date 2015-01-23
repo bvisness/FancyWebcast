@@ -1,17 +1,157 @@
 /* line 4, ../scss/styles.scss */
-.score {
-  width: 250px;
-  height: 250px;
-  font-size: 100px;
-  padding: 80px 10px;
-  box-sizing: border-box;
+body {
+  background-color: magenta;
+  overflow: hidden;
+}
+
+/* line 9, ../scss/styles.scss */
+.view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 40px;
+}
+
+/* line 16, ../scss/styles.scss */
+#match .container {
+  height: 22.30769%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ddd;
+  font-family: "Arial Rounded MT Bold", sans-serif;
+}
+/* line 24, ../scss/styles.scss */
+#match .timer-container {
+  height: 27.58621%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ccc;
+  font-size: 32px;
   text-align: center;
 }
-/* line 12, ../scss/styles.scss */
-.score.red {
+/* line 32, ../scss/styles.scss */
+#match .timer-container #timer {
+  width: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  background-color: white;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 6px;
+  position: relative;
+  z-index: 2;
+}
+/* line 45, ../scss/styles.scss */
+#match .timer-container .timer-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background-color: #2CE88B;
+  border-radius: 0 999px 999px 0;
+  z-index: 1;
+}
+/* line 55, ../scss/styles.scss */
+#match .timer-container .timer-fill.yellow {
+  background-color: yellow;
+}
+/* line 59, ../scss/styles.scss */
+#match .timer-container .timer-fill.red {
   background-color: red;
 }
-/* line 15, ../scss/styles.scss */
-.score.blue {
+/* line 65, ../scss/styles.scss */
+#match .info {
+  height: 72.41379%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 0;
+}
+/* line 73, ../scss/styles.scss */
+#match .info .left-info, #match .info .right-info, #match .info .center-info {
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  font-size: medium;
+}
+/* line 80, ../scss/styles.scss */
+#match .info .left-info {
+  width: 18.49711%;
+  left: 0;
+}
+/* line 84, ../scss/styles.scss */
+#match .info .right-info {
+  width: 18.49711%;
+  right: 0;
+}
+/* line 88, ../scss/styles.scss */
+#match .info .center-info {
+  width: 63.00578%;
+  text-align: center;
+  font-size: 0;
+}
+/* line 93, ../scss/styles.scss */
+#match .info .center-info #red-teams, #match .info .center-info #blue-teams {
+  display: inline-block;
+  vertical-align: top;
+  width: 27.98165%;
+  height: 100%;
+}
+/* line 99, ../scss/styles.scss */
+#match .info .center-info #red-teams .team-number, #match .info .center-info #red-teams .team-rank, #match .info .center-info #blue-teams .team-number, #match .info .center-info #blue-teams .team-rank {
+  border: 2px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 20px;
+  padding: 2px 10px;
+}
+/* line 108, ../scss/styles.scss */
+#match .info .center-info #red-teams .team-number, #match .info .center-info #blue-teams .team-number {
+  text-align: left;
+  background-color: #66dd66;
+  width: 53.57143%;
+}
+/* line 113, ../scss/styles.scss */
+#match .info .center-info #red-teams .team-rank, #match .info .center-info #blue-teams .team-rank {
+  text-align: center;
+  background-color: #ddd;
+  width: 46.42857%;
+}
+/* line 120, ../scss/styles.scss */
+#match .info .center-info .scores-container {
+  width: 44.0367%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+/* line 127, ../scss/styles.scss */
+#match .info .center-info .scores-container .score {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  font-size: 4vw;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+/* line 135, ../scss/styles.scss */
+#match .info .center-info .scores-container .score.red {
+  background-color: red;
+}
+/* line 138, ../scss/styles.scss */
+#match .info .center-info .scores-container .score.blue {
   background-color: blue;
 }
