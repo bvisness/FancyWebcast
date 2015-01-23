@@ -11,8 +11,9 @@ POSTFIX = "?X-TBA-App-Id=2175:FancyWebcast:0.1"
 
 def getLiveMatchFromFile():
     match = {}
-    with open('match.json', 'rb') as f:
-        match = json.loads(f)
+    f = open('match.json')
+    match = json.load(f)
+    f.close()
     return match
 
 def getLiveMatchFromOnline(event, number):

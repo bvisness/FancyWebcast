@@ -4,18 +4,26 @@ from time import time, strftime
 import json
 import match
 
-EVENT_NAME = "2014arc"
+CONFIG = {}
 
 def writeView(view):
     out = {'view': view}
     with open('view.json', 'w') as outfile:
         json.dump(out, outfile)
 
+def loadConfig():
+    global CONFIG
+    f = open('config.json')
+    CONFIG = json.load(f)
+    f.close()
+
 def main():
     """The main method for this program."""
 
     mode = -1
     current_match = None
+
+    loadConfig()
 
     # The available modes for this program are:
     # -1: Make new match
@@ -41,7 +49,7 @@ def main():
 
             if command == "y":
                 match_name = raw_input('Enter the tag for this match (e.g. "qm1" or "f2"): ')
-                current_match = match.getLiveMatchFromOnline(EVENT_NAME, match_name)
+                current_match = match.getLiveMatchFromOnline(CONFIG['event']['name'], match_name)
             else:
                 print "Entering the match manually."
                 # Get a match manually
