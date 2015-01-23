@@ -1,35 +1,41 @@
-import csv
+"""Stuff related to FRC matches."""
 
-class Match:
-	fieldnames = ['number', 'starttime', 'redscore', 'bluescore']
+import time
+import json
+import urllib2
+import collections
 
-	def __init__(self,number=0,starttime=0,redscore=0,bluescore=0):
-		self.number = number
-		self.starttime = starttime
-		self.redscore = redscore
-		self.bluescore = bluescore
+import score
 
-def getMatchFromFile():
-	match = Match()
-	with open('match.csv', 'rb') as f:
-		reader = csv.DictReader(f)
-		for row in reader:
-			match = Match(row['number'],row['starttime'],row['redscore'],row['bluescore'])
-			break
-	return match
+POSTFIX = "?X-TBA-App-Id=2175:FancyWebcast:0.1"
 
-def getScores():
-	match = getMatch()
-	return (match.redscore, match.bluescore)
+def getLiveMatchFromFile():
+    match = {}
+    with open('match.json', 'rb') as f:
+        match = json.loads(f)
+    return match
 
-def writeMatch(match):
-	with open('match.csv', 'w') as csvfile:
-		fieldnames = Match.fieldnames
-		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+def getLiveMatchFromOnline(event, number):
+    key = event + "_" + number
+    response = urllib2.urlopen("http://www.thebluealliance.com/api/v2/match/" + key + POSTFIX).read()
+    match = json.loads(response)
+    return match
 
-		writer.writeheader()
-		writer.writerow({'number': match.number, 'starttime': match.starttime, 'redscore': match.redscore, 'bluescore': match.bluescore})
+def getLiveMatchScores():
+    match = getLiveMatchFromFile()
+    return (match['alliances']['red']['score'], match['alliances']['blue']['score'])
 
-def getMatchFromOnline(event, number):
-	# Use TBA or FMS API to get match with given number
-	return
+def writeLiveMatch(match):
+    with open('match.json', 'w') as outfile:
+        json.dump(match, outfile)
+
+def liveMatchStr(match):
+    result = "Match key: " + match['key'] + "\n"
+    if 'start_time' in match:
+        result += "Match started at " + time.strftime("%I:%M:%S", time.localtime(match['start_time'] / 1000)) + "\n"
+    result += "Red: " + str(match['alliances']['red']['score']) + "\t\tBlue: " + str(match['alliances']['blue']['score']) + "\n"
+    result += "Red teams:\tBlue Teams:\n"
+    for i in range(0, 3):
+        result += "- " + match['alliances']['red']['teams'][i] + "\t- " + match['alliances']['blue']['teams'][i] + "\n"
+
+    return result

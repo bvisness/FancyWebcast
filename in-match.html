@@ -16,6 +16,9 @@
 	
 	<!-- jQuery UI -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+	<!-- jQuery Transit -->
+	<script src="js/jquery.transit.min.js" type="text/javascript"></script>
 	
 	<!-- jQuery CSV -->
 	<script src="js/jquery.csv-0.71.min.js" type="text/javascript"></script>
@@ -25,9 +28,66 @@
 </head>
 
 <body>
-	<div id="red" class="score red">0</div>
-	<div id="blue" class="score blue">0</div>
-	<div id="timer">0</div>
+	<div id="match" class="view">
+		<div class="container">
+			<div class="timer-container">
+				<div class="timer-fill"></div>
+				<div id="timer">0</div>
+			</div>
+			<div class="info">
+				<div class="left-info">
+					FIRST Logo Here
+				</div>
+				<div class="center-info">
+					<div id="red-teams">
+						<div class="team">
+							<div class="team-rank">XX</div>
+							<div class="team-number"></div>
+						</div>
+						<div class="team">
+							<div class="team-rank">XX</div>
+							<div class="team-number"></div>
+						</div>
+						<div class="team">
+							<div class="team-rank">XX</div>
+							<div class="team-number"></div>
+						</div>
+					</div>
+					<div class="scores-container">
+						<div id="red" class="score red">0</div>
+						<div id="blue" class="score blue">0</div>
+					</div>
+					<div id="blue-teams">
+						<div class="team">
+							<div class="team-number"></div>
+							<div class="team-rank">XX</div>
+						</div>
+						<div class="team">
+							<div class="team-number"></div>
+							<div class="team-rank">XX</div>
+						</div>
+						<div class="team">
+							<div class="team-number"></div>
+							<div class="team-rank">XX</div>
+						</div>
+					</div>
+				</div>
+				<div class="right-info">
+					Game Logo Here
+					<h2>Match <span id="match_number">X</span></h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="results" class="view">
+		Results!
+	</div>
+	<div id="rankings" class="view">
+		Rankings!
+	</div>
+	<div id="upcoming" class="view">
+		Upcoming match!
+	</div>
 </body>
 
 </html>
