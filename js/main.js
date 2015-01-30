@@ -11,8 +11,15 @@ function readFile(filename, responder) {
 
 function matchResponder() {
 	theMatch = $.parseJSON(this.responseText);
+
 	$('#red').text(theMatch.alliances.red.score);
 	$('#blue').text(theMatch.alliances.blue.score);
+
+	if (theMatch.coopertition_achieved)
+		$('#coop').show();
+	else
+		$('#coop').hide();
+
 	$('#red-teams .team-number').each(function(i) {
 		var team = theMatch.alliances.red.teams[i];
 		$(this).text(team.substring(3, team.length));
@@ -21,6 +28,7 @@ function matchResponder() {
 		var team = theMatch.alliances.blue.teams[i];
 		$(this).text(team.substring(3, team.length));
 	});
+	
 	$('#match_number').text(theMatch.match_number);
 }
 

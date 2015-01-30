@@ -123,6 +123,7 @@ body {
 				display: inline-block;
 				vertical-align: top;
 				text-align: center;
+				position: relative;
 
 				.score {
 					width: 50%;
@@ -138,6 +139,16 @@ body {
 					&.blue {
 						background-color: $blue;
 					}
+				}
+
+				.coopertition-icon {
+					background-color: yellow;
+					width: 70px;
+					height: 40px;
+					position: absolute;
+					bottom: 0;
+					left: 50%;
+					margin-left: -35px;
 				}
 			}
 		}

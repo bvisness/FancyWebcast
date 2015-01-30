@@ -137,8 +137,9 @@ body {
   display: inline-block;
   vertical-align: top;
   text-align: center;
+  position: relative;
 }
-/* line 127, ../scss/styles.scss */
+/* line 128, ../scss/styles.scss */
 #match .info .center-info .scores-container .score {
   width: 50%;
   height: 100%;
@@ -147,11 +148,21 @@ body {
   padding: 30px 20px;
   box-sizing: border-box;
 }
-/* line 135, ../scss/styles.scss */
+/* line 136, ../scss/styles.scss */
 #match .info .center-info .scores-container .score.red {
   background-color: red;
 }
-/* line 138, ../scss/styles.scss */
+/* line 139, ../scss/styles.scss */
 #match .info .center-info .scores-container .score.blue {
   background-color: blue;
+}
+/* line 144, ../scss/styles.scss */
+#match .info .center-info .scores-container .coopertition-icon {
+  background-color: yellow;
+  width: 70px;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -35px;
 }

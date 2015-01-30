@@ -99,6 +99,7 @@ def main():
             print "\nAvailable commands:"
             print "r\t- Edits red alliance score"
             print "b\t- Edits blue alliance score"
+            print "c\t- Shows or hides the Coopertition icon"
             print "end\t- Ends the match. (Match ended normally)"
             print "cancel\t- Cancels the current match. (Match was canceled by the refs)"
 
@@ -118,6 +119,12 @@ def main():
                     current_match['alliances']['blue']['score'] = bs_int
                 except Exception:
                     print '"' + bs + '" is not a valid score.'
+            elif command == "c":
+                c = raw_input("Show Coopertition icon? (y/n): ");
+                if c == "y":
+                    current_match['coopertition_achieved'] = True
+                else:
+                    current_match['coopertition_achieved'] = False
             elif command == "end":
                 current_match['match_running'] = False
                 mode = 2
