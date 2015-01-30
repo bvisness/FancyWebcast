@@ -1,4 +1,17 @@
-var MATCH_LENGTH = 150;
+// --- Match timing ---
+//
+// Durations of the different match periods, in seconds.
+// AUTO_LENGTH: Duration of autonomous.
+// PAUSE_LENGTH: Duration of the pause between auto and teleop.
+// TELEOP_LENGTH: The duration of teleop, including the endgame time.
+// WARNING_LENGTH: The duration of the warning period or endgame. This is considered part of teleop.
+
+var AUTO_LENGTH = 15;
+var PAUSE_LENGTH = 5;
+var TELEOP_LENGTH = 135;
+var WARNING_LENGTH = 30;
+
+var MATCH_LENGTH = AUTO_LENGTH + TELEOP_LENGTH;
 
 var theMatch;
 
@@ -28,7 +41,7 @@ function matchResponder() {
 		var team = theMatch.alliances.blue.teams[i];
 		$(this).text(team.substring(3, team.length));
 	});
-	
+
 	$('#match_number').text(theMatch.match_number);
 }
 
@@ -51,22 +64,27 @@ function viewResponder() {
 function updateTimer() {
 	if (theMatch.match_running) {
 		var elapsedSeconds = Math.floor((Date.now() - parseInt(theMatch.start_time)) / 1000);
-		var secondsLeft = MATCH_LENGTH - elapsedSeconds;
-		if (secondsLeft < 0)
-			secondsLeft = 0;
 
 		var output;
-		if (secondsLeft >= MATCH_LENGTH - 15)
-			output = secondsLeft - (MATCH_LENGTH - 15);
-		else
-			output = secondsLeft;
+		if (elapsedSeconds < AUTO_LENGTH) {
+			output = MATCH_LENGTH - elapsedSeconds;
+		}
+		else if (elapsedSeconds < AUTO_LENGTH + PAUSE_LENGTH) {
+			output = MATCH_LENGTH - AUTO_LENGTH;
+		}
+		else {
+			output = MATCH_LENGTH - (elapsedSeconds - PAUSE_LENGTH);
+		}
 
+		if (output < 0)
+			output = 0;
+		
 		$('#timer').text(output);
-
-		$('.timer-fill').css('width', ((MATCH_LENGTH - secondsLeft) / MATCH_LENGTH) * 100 + "%");
-		if (secondsLeft == 0)
+		
+		$('.timer-fill').css('width', ((MATCH_LENGTH - output) / MATCH_LENGTH) * 100 + "%");
+		if (output == 0)
 			$('.timer-fill').addClass('red');
-		else if (secondsLeft <= 30)
+		else if (output <= WARNING_LENGTH)
 			$('.timer-fill').addClass('yellow');
 		else
 			$('.timer-fill').removeClass('red yellow');
