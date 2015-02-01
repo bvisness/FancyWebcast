@@ -1,6 +1,6 @@
 """The new and improved controller for FancyWebcast."""
 
-from time import time, strftime
+from time import time, strftime, sleep
 import json
 import match
 
@@ -91,6 +91,11 @@ def main():
             else:
                 print "Unknown command."
         elif mode == 1:
+            sleep(10)
+            raw_input("Press enter once teleop begins.");
+            current_match['teleop_time'] = time() * 1000
+            mode = 1.1;
+        elif mode == 1.1:
             # Match running
 
             print "Match in progress:"

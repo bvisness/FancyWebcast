@@ -7,7 +7,6 @@
 // WARNING_LENGTH: The duration of the warning period or endgame. This is considered part of teleop.
 
 var AUTO_LENGTH = 15;
-var PAUSE_LENGTH = 5;
 var TELEOP_LENGTH = 135;
 var WARNING_LENGTH = 30;
 
@@ -63,17 +62,18 @@ function viewResponder() {
 
 function updateTimer() {
 	if (theMatch.match_running) {
-		var elapsedSeconds = Math.floor((Date.now() - parseInt(theMatch.start_time)) / 1000);
+		var secondsFromStart = Math.floor((Date.now() - parseInt(theMatch.start_time)) / 1000);
+		var secondsFromTeleop = Math.floor((Date.now() - parseInt(theMatch.teleop_time)) / 1000);
 
 		var output;
-		if (elapsedSeconds < AUTO_LENGTH) {
-			output = MATCH_LENGTH - elapsedSeconds;
-		}
-		else if (elapsedSeconds < AUTO_LENGTH + PAUSE_LENGTH) {
-			output = MATCH_LENGTH - AUTO_LENGTH;
+		if ( isNaN(secondsFromTeleop) ) {
+			if (secondsFromStart >= AUTO_LENGTH)
+				output = MATCH_LENGTH - AUTO_LENGTH;
+			else
+				output = MATCH_LENGTH - secondsFromStart;
 		}
 		else {
-			output = MATCH_LENGTH - (elapsedSeconds - PAUSE_LENGTH);
+			output = MATCH_LENGTH - AUTO_LENGTH - secondsFromTeleop;
 		}
 
 		if (output < 0)
