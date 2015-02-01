@@ -28,12 +28,14 @@ def main():
     # The available modes for this program are:
     # -1: Make new match
     # 0: Match ready
-    # 1: Match running
+    # 1.1: Match running (auto)
+    # 1.2: Match running (teleop)
     # 2: Match ended
     # 3: Match canceled
     # 4: Match results
     # 5: Upcoming match
-    # 6: Rankings
+    # 6.1: Pre-Match Rankings
+    # 6.2: Post-Match Rankings
 
     while True:
         print "\n\n"
@@ -81,7 +83,7 @@ def main():
                     current_match['start_time'] = time() * 1000
                     current_match['match_running'] = True
                     print "Match started at " + strftime("%I:%M:%S") + "."
-                    mode = 1
+                    mode = 1.1
             elif command == "new":
                 mode = -1
             elif command == "r":
@@ -90,12 +92,12 @@ def main():
                 mode = 5
             else:
                 print "Unknown command."
-        elif mode == 1:
+        elif mode == 1.1:
             sleep(10)
             raw_input("Press enter once teleop begins.");
             current_match['teleop_time'] = time() * 1000
             mode = 1.1;
-        elif mode == 1.1:
+        elif mode == 1.2:
             # Match running
 
             print "Match in progress:"

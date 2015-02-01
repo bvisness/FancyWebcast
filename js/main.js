@@ -89,6 +89,11 @@ function updateTimer() {
 		else
 			$('.timer-fill').removeClass('red yellow');
 	}
+	else if (!theMatch.start_time) {
+		$('#timer').text(150);
+		$('.timer-fill').css('width', 0);
+		$('.timer-fill').removeClass('red yellow');
+	}
 }
 
 $(document).ready(function() {
