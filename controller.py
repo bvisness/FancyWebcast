@@ -17,6 +17,31 @@ def loadConfig():
     CONFIG = json.load(f)
     f.close()
 
+def getMatchManually():
+    result = {}
+
+    tag = raw_input("Enter the match tag: ")
+    tag = match.parseTag(tag)
+    result['key'] = CONFIG['event']['name'] + "_" + tag['tag']
+
+    result['comp_level'] = tag['comp_level']
+    result['match_number'] = tag['match_number']
+    result['set_number'] = tag['set_number']
+
+    result['alliances'] = {'red': {'score': 0}, 'blue': {'score': 0}}
+    print "Enter red alliance teams: "
+    red_1 = "frc" + raw_input("Red 1: ")
+    red_2 = "frc" + raw_input("Red 2: ")
+    red_3 = "frc" + raw_input("Red 3: ")
+    print "Enter blue alliance teams: "
+    blue_1 = "frc" + raw_input("Blue 1: ")
+    blue_2 = "frc" + raw_input("Blue 2: ")
+    blue_3 = "frc" + raw_input("Blue 3: ")
+    result['alliances']['red']['teams'] = [red_1, red_2, red_3]
+    result['alliances']['blue']['teams'] = [blue_1, blue_2, blue_3]
+
+    return result;
+
 def main():
     """The main method for this program."""
 
@@ -54,8 +79,11 @@ def main():
                 current_match = match.getLiveMatchFromOnline(CONFIG['event']['name'], match_name)
             else:
                 print "Entering the match manually."
-                # Get a match manually
-                break
+                try:
+                    current_match = getMatchManually()
+                except RuntimeError, e:
+                    print e
+                    continue
 
             current_match['match_running'] = False
 

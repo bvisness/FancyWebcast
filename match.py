@@ -4,6 +4,7 @@ import time
 import json
 import urllib2
 import collections
+import re
 
 import score
 
@@ -38,5 +39,21 @@ def liveMatchStr(match):
     result += "Red teams:\tBlue Teams:\n"
     for i in range(0, 3):
         result += "- " + match['alliances']['red']['teams'][i] + "\t- " + match['alliances']['blue']['teams'][i] + "\n"
+
+    return result
+
+def parseTag(tag):
+    p = re.compile("^((qm[0-9]+)|((qf|sf|f)[0-9]+m[0-9]+))$")
+    if (p.match(tag) == None):
+        raise RuntimeError("Tag was not valid.")
+
+    result = {'tag': tag}
+    result['comp_level'] = re.findall("[a-zA-Z]+", tag)[0]
+    if (result['comp_level'] == "qm"):
+        result['set_number'] = -1
+        result['match_number'] = int(re.findall("[0-9]+", tag)[0])
+    else:
+        result['set_number'] = int(re.findall("[0-9]+", tag)[0])
+        result['match_number'] = int(re.findall("[0-9]+", tag)[1])
 
     return result
