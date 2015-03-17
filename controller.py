@@ -3,6 +3,7 @@
 from time import time, strftime, sleep
 import json
 import match
+import matches
 
 CONFIG = {}
 
@@ -47,6 +48,7 @@ def main():
 
     mode = -1
     current_match = None
+    all_matches = matches.loadMatchesFromFile()
 
     loadConfig()
 
@@ -189,6 +191,8 @@ def main():
             raw_input("Blue container: ")
             raw_input("Blue litter: ")
             raw_input("Blue foul: ")
+
+            matches.addMatchToMatches(current_match, all_matches)
 
             mode = 4
         elif mode == 3:

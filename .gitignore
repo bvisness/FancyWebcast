@@ -2,3 +2,5 @@
 .sass-cache
 match.json
 view.json
+config.json
+matches.json
