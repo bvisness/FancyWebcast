@@ -88,6 +88,8 @@ def main():
                     continue
 
             current_match['match_running'] = False
+            current_match['alliances']['red']['score'] = 0
+            current_match['alliances']['blue']['score'] = 0
 
             mode = 0
         elif mode == 0:
