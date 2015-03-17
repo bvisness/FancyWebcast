@@ -58,6 +58,7 @@ def main():
     # 1.1: Match running (auto)
     # 1.2: Match running (teleop)
     # 2: Match ended
+    # 2.1: Match final scores ready
     # 3: Match canceled
     # 4: Match results
     # 5: Upcoming match
@@ -119,7 +120,7 @@ def main():
             elif command == "new":
                 mode = -1
             elif command == "r":
-                mode = 6
+                mode = 6.1
             elif command == "u":
                 mode = 5
             else:
@@ -178,8 +179,20 @@ def main():
 
             print "Match ended:"
             print match.liveMatchStr(current_match)
-            raw_input("Press enter when the final score goes up onscreen.")
 
+            print "\nAvailable commands:"
+            print "f\t- Enter final score"
+            print "r\t- Switches to post-match rankings"
+
+            command = raw_input("Enter your command: ")
+
+            if command == "f":
+                mode = 2.1
+            elif command == "r":
+                mode = 6.2
+            else:
+                print "Unknown command."
+        elif mode == 2.1:
             # Display "final score coming soon" thing
 
             ra = int(raw_input("Red auto: "))
@@ -231,7 +244,7 @@ def main():
             if command == "new":
                 mode = -1
             elif command == "r":
-                mode = 6
+                mode = 6.1
             elif command == "u":
                 mode = 5
             else:
@@ -254,7 +267,7 @@ def main():
             if command == "new":
                 mode = -1
             elif command == "r":
-                mode = 6
+                mode = 6.1
             elif command == "u":
                 mode = 5
             else:
@@ -276,15 +289,15 @@ def main():
             if command == "new":
                 mode = -1
             elif command == "r":
-                mode = 6
+                mode = 6.1
             else:
                 print "Unknown command."
-        elif mode == 6:
-            # Rankings view
+        elif mode == 6.1:
+            # Pre-Match Rankings view
 
-            writeView("rankings")
+            writeView("pre-rankings")
 
-            print "Now displaying rankings."
+            print "Now displaying pre-match rankings."
 
             print "\nAvailable commands:"
             print "new\t- Creates or loads a new match"
@@ -296,6 +309,22 @@ def main():
                 mode = -1
             elif command == "u":
                 mode = 5
+            else:
+                print "Unknown command."
+        elif mode == 6.2:
+            # Post-Match Rankings view
+
+            writeView("post-rankings")
+
+            print "Now displaying post-match rankings."
+
+            print "\nAvailable commands:"
+            print "f\t- Enters final match scores"
+
+            command = raw_input("Enter your command: ")
+
+            if command == "f":
+                mode = 2.1
             else:
                 print "Unknown command."
 
