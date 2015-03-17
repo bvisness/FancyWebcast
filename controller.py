@@ -182,17 +182,36 @@ def main():
 
             # Display "final score coming soon" thing
 
-            raw_input("Red auto: ")
-            raw_input("Red tote: ")
-            raw_input("Red container: ")
-            raw_input("Red litter: ")
-            raw_input("Red foul: ")
+            ra = int(raw_input("Red auto: "))
+            rt = int(raw_input("Red tote: "))
+            rc = int(raw_input("Red container: "))
+            rl = int(raw_input("Red litter: "))
+            rf = abs(int(raw_input("Red foul: "))) * -1
+            rtot = int(raw_input("Red total score: "))
 
-            raw_input("Blue auto: ")
-            raw_input("Blue tote: ")
-            raw_input("Blue container: ")
-            raw_input("Blue litter: ")
-            raw_input("Blue foul: ")
+            ba = int(raw_input("Blue auto: "))
+            bt = int(raw_input("Blue tote: "))
+            bc = int(raw_input("Blue container: "))
+            bl = int(raw_input("Blue litter: "))
+            bf = abs(int(raw_input("Blue foul: "))) * -1
+            btot = int(raw_input("Blue total score: "))
+
+            current_match['alliances']['red']['score'] = rtot
+            current_match['alliances']['blue']['score'] = btot
+            current_match['alliances']['red']['score_breakdown'] = {
+                'auto': ra,
+                'tote': rt,
+                'container': rc,
+                'container': rl,
+                'foul': rf,
+            }
+            current_match['alliances']['blue']['score_breakdown'] = {
+                'auto': ba,
+                'tote': bt,
+                'container': bc,
+                'container': bl,
+                'foul': bf,
+            }
 
             matches.addMatchToMatches(current_match, all_matches)
 

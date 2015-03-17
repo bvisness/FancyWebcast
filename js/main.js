@@ -42,6 +42,22 @@ function matchResponder() {
 	});
 
 	$('#match_number').text(theMatch.match_number);
+
+	if (theMatch.alliances.red.score_breakdown) {
+		var r = theMatch.alliances.red.score_breakdown;
+		$('#red-results .auto').text(r.auto);
+		$('#red-results .tote').text(r.tote);
+		$('#red-results .container').text(r.container);
+		$('#red-results .litter').text(r.litter);
+		$('#red-results .foul').text(r.foul);
+
+		var b = theMatch.alliances.blue.score_breakdown;
+		$('#blue-results .auto').text(b.auto);
+		$('#blue-results .tote').text(b.tote);
+		$('#blue-results .container').text(b.container);
+		$('#blue-results .litter').text(b.litter);
+		$('#blue-results .foul').text(b.foul);
+	}
 }
 
 function showView(view) {
