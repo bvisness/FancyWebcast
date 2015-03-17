@@ -128,7 +128,7 @@ def main():
             sleep(10)
             raw_input("Press enter once teleop begins.");
             current_match['teleop_time'] = time() * 1000
-            mode = 1.1;
+            mode = 1.2;
         elif mode == 1.2:
             # Match running
 
