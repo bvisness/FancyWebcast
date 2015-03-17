@@ -6,8 +6,6 @@ import urllib2
 import collections
 import re
 
-import score
-
 POSTFIX = "?X-TBA-App-Id=2175:FancyWebcast:0.1"
 
 def getLiveMatchFromFile():
@@ -21,6 +19,13 @@ def getLiveMatchFromOnline(event, number):
     key = event + "_" + number
     response = urllib2.urlopen("http://www.thebluealliance.com/api/v2/match/" + key + POSTFIX).read()
     match = json.loads(response)
+    return match
+
+def emptyMatch():
+    match = {}
+    match['alliances'] = {}
+    match['alliances']['red'] = {}
+    match['alliances']['blue'] = {}
     return match
 
 def getLiveMatchScores():
