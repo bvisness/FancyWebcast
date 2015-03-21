@@ -195,6 +195,8 @@ def main():
         elif mode == 2.1:
             # Display "final score coming soon" thing
 
+            #TODO PUT IN COOPERTITION!
+
             ra = int(raw_input("Red auto: "))
             rt = int(raw_input("Red tote: "))
             rc = int(raw_input("Red container: "))
@@ -215,14 +217,14 @@ def main():
                 'auto': ra,
                 'tote': rt,
                 'container': rc,
-                'container': rl,
+                'litter': rl,
                 'foul': rf,
             }
             current_match['alliances']['blue']['score_breakdown'] = {
                 'auto': ba,
                 'tote': bt,
                 'container': bc,
-                'container': bl,
+                'litter': bl,
                 'foul': bf,
             }
 
