@@ -4,6 +4,7 @@ from time import time, strftime, sleep
 import json
 import match
 import matches
+import rankings
 
 CONFIG = {}
 
@@ -297,7 +298,10 @@ def main():
         elif mode == 6.1:
             # Pre-Match Rankings view
 
-            writeView("pre-rankings")
+            theRankings = rankings.loadRankingsFromOnline(CONFIG['event']['name'])
+            rankings.writeRankings(theRankings)
+
+            writeView("rankings")
 
             print "Now displaying pre-match rankings."
 
@@ -316,7 +320,10 @@ def main():
         elif mode == 6.2:
             # Post-Match Rankings view
 
-            writeView("post-rankings")
+            theRankings = rankings.loadRankingsFromOnline(CONFIG['event']['name'])
+            rankings.writeRankings(theRankings)
+
+            writeView("rankings")
 
             print "Now displaying post-match rankings."
 

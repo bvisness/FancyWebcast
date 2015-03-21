@@ -14,6 +14,13 @@ var MATCH_LENGTH = AUTO_LENGTH + TELEOP_LENGTH;
 
 var theMatch;
 
+$(document).ready(function() {
+	setInterval(function() { readFile("match.json", matchResponder); }, 1000);
+	setInterval(function() { readFile("view.json", viewResponder); }, 1000)
+	setInterval(function() { readFile("rankings.json", rankingsResponder); }, 1000);
+	setInterval(function() { updateTimer(); }, 50);
+});
+
 function readFile(filename, responder) {
 	var oReq = new XMLHttpRequest();
 	oReq.onload = responder;
@@ -76,6 +83,11 @@ function viewResponder() {
 	$( '#' + view ).each(function() { showView(this) });
 }
 
+function rankingsResponder() {
+	var rankings = $.parseJSON(this.responseText);
+	updateRankings(rankings);
+}
+
 function updateTimer() {
 	if (theMatch.match_running) {
 		var secondsFromStart = Math.floor((Date.now() - parseInt(theMatch.start_time)) / 1000);
@@ -112,8 +124,36 @@ function updateTimer() {
 	}
 }
 
-$(document).ready(function() {
-	setInterval(function() { readFile("match.json", matchResponder); }, 1000);
-	setInterval(function() { readFile("view.json", viewResponder); }, 1000)
-	setInterval(function() { updateTimer(); }, 50);
-});
+function updateRankings(rankings) {
+	$( '#rankings tbody tr' ).not( '.prototype' ).remove();
+	var prototype = $( '#rankings .ranking.prototype' );
+	for (var i = 1; i < rankings.length; i++) {
+		var newRanking = $( prototype ).clone();
+		// var newRankings = $( prototype ).clone().append( prototype );
+
+		var rank = i;
+		var teamNumber = rankings[i].number;
+		// var niceTeamNumber = teamNumber.substring(3, teamNumber.length);
+		var qualAvg = rankings[i].qualification_average;
+		var coop = rankings[i].coopertition_sum;
+		var auto = rankings[i].auto_sum;
+		var container = rankings[i].container_sum;
+		var tote = rankings[i].tote_sum;
+		var litter = rankings[i].litter_sum;
+		var played = rankings[i].played;
+
+		$( newRanking ).find( '.rank' ).text(rank);
+		$( newRanking ).find( '.team' ).text(teamNumber);
+		$( newRanking ).find( '.qualification-average' ).text(qualAvg);
+		$( newRanking ).find( '.coopertition-sum' ).text(coop);
+		$( newRanking ).find( '.auto-sum' ).text(auto);
+		$( newRanking ).find( '.container-sum' ).text(container);
+		$( newRanking ).find( '.tote-sum' ).text(tote);
+		$( newRanking ).find( '.litter-sum' ).text(litter);
+		$( newRanking ).find( '.played' ).text(played);
+
+		$( newRanking ).removeClass('prototype');
+
+		$( '#rankings tbody' ).append( newRanking );
+	}
+}

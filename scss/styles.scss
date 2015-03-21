@@ -9,7 +9,6 @@ body {
 .view {
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
-	padding: 40px;
 }
 
 #match {
@@ -151,6 +150,45 @@ body {
 					margin-left: -35px;
 				}
 			}
+		}
+	}
+}
+
+#rankings {
+
+	.prototype {
+		display: none;
+	}
+
+	table {
+		width: 100%;
+		font-weight: bold;
+		font-family: Arial;
+		text-align: center;
+		font-size: 1.6vw;
+		background-color: white;
+		border-spacing: 0;
+
+		td {
+			padding: 10px;
+			border-bottom: 1px solid #999;
+		}
+
+		tr:nth-child(odd) td {
+			background-color: #eee;
+		}
+		tr:nth-child(even) td {
+			background-color: white;
+		}
+		
+		thead td {
+			z-index: 2;
+			position: relative;
+		}
+		tbody td {
+			// To scroll results, set transform: translateY() in this rule.
+			z-index: 1;
+			position: relative;
 		}
 	}
 }

@@ -104,3 +104,7 @@ def updateTeamInfo(teams, matches):
 	return teams
 
 #TODO Add a method that actually produces a rankings array from the information above!
+
+def writeRankings(rankings):
+	with open('rankings.json', 'w') as outfile:
+		json.dump(rankings, outfile)

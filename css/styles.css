@@ -11,10 +11,9 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  padding: 40px;
 }
 
-/* line 16, ../scss/styles.scss */
+/* line 15, ../scss/styles.scss */
 #match .container {
   height: 22.30769%;
   position: absolute;
@@ -24,7 +23,7 @@ body {
   background-color: #ddd;
   font-family: "Arial Rounded MT Bold", sans-serif;
 }
-/* line 24, ../scss/styles.scss */
+/* line 23, ../scss/styles.scss */
 #match .timer-container {
   height: 27.58621%;
   position: absolute;
@@ -35,7 +34,7 @@ body {
   font-size: 32px;
   text-align: center;
 }
-/* line 32, ../scss/styles.scss */
+/* line 31, ../scss/styles.scss */
 #match .timer-container #timer {
   width: 8%;
   margin-left: auto;
@@ -48,7 +47,7 @@ body {
   position: relative;
   z-index: 2;
 }
-/* line 45, ../scss/styles.scss */
+/* line 44, ../scss/styles.scss */
 #match .timer-container .timer-fill {
   position: absolute;
   left: 0;
@@ -59,15 +58,15 @@ body {
   border-radius: 0 999px 999px 0;
   z-index: 1;
 }
-/* line 55, ../scss/styles.scss */
+/* line 54, ../scss/styles.scss */
 #match .timer-container .timer-fill.yellow {
   background-color: yellow;
 }
-/* line 59, ../scss/styles.scss */
+/* line 58, ../scss/styles.scss */
 #match .timer-container .timer-fill.red {
   background-color: red;
 }
-/* line 65, ../scss/styles.scss */
+/* line 64, ../scss/styles.scss */
 #match .info {
   height: 72.41379%;
   position: absolute;
@@ -78,37 +77,37 @@ body {
   box-sizing: border-box;
   font-size: 0;
 }
-/* line 73, ../scss/styles.scss */
+/* line 72, ../scss/styles.scss */
 #match .info .left-info, #match .info .right-info, #match .info .center-info {
   height: 100%;
   display: inline-block;
   vertical-align: top;
   font-size: medium;
 }
-/* line 80, ../scss/styles.scss */
+/* line 79, ../scss/styles.scss */
 #match .info .left-info {
   width: 18.49711%;
   left: 0;
 }
-/* line 84, ../scss/styles.scss */
+/* line 83, ../scss/styles.scss */
 #match .info .right-info {
   width: 18.49711%;
   right: 0;
 }
-/* line 88, ../scss/styles.scss */
+/* line 87, ../scss/styles.scss */
 #match .info .center-info {
   width: 63.00578%;
   text-align: center;
   font-size: 0;
 }
-/* line 93, ../scss/styles.scss */
+/* line 92, ../scss/styles.scss */
 #match .info .center-info #red-teams, #match .info .center-info #blue-teams {
   display: inline-block;
   vertical-align: top;
   width: 27.98165%;
   height: 100%;
 }
-/* line 99, ../scss/styles.scss */
+/* line 98, ../scss/styles.scss */
 #match .info .center-info #red-teams .team-number, #match .info .center-info #red-teams .team-rank, #match .info .center-info #blue-teams .team-number, #match .info .center-info #blue-teams .team-rank {
   border: 2px solid black;
   border-radius: 5px;
@@ -118,19 +117,19 @@ body {
   font-size: 20px;
   padding: 2px 10px;
 }
-/* line 108, ../scss/styles.scss */
+/* line 107, ../scss/styles.scss */
 #match .info .center-info #red-teams .team-number, #match .info .center-info #blue-teams .team-number {
   text-align: left;
   background-color: #66dd66;
   width: 53.57143%;
 }
-/* line 113, ../scss/styles.scss */
+/* line 112, ../scss/styles.scss */
 #match .info .center-info #red-teams .team-rank, #match .info .center-info #blue-teams .team-rank {
   text-align: center;
   background-color: #ddd;
   width: 46.42857%;
 }
-/* line 120, ../scss/styles.scss */
+/* line 119, ../scss/styles.scss */
 #match .info .center-info .scores-container {
   width: 44.0367%;
   height: 100%;
@@ -139,7 +138,7 @@ body {
   text-align: center;
   position: relative;
 }
-/* line 128, ../scss/styles.scss */
+/* line 127, ../scss/styles.scss */
 #match .info .center-info .scores-container .score {
   width: 50%;
   height: 100%;
@@ -148,15 +147,15 @@ body {
   padding: 30px 20px;
   box-sizing: border-box;
 }
-/* line 136, ../scss/styles.scss */
+/* line 135, ../scss/styles.scss */
 #match .info .center-info .scores-container .score.red {
   background-color: red;
 }
-/* line 139, ../scss/styles.scss */
+/* line 138, ../scss/styles.scss */
 #match .info .center-info .scores-container .score.blue {
   background-color: blue;
 }
-/* line 144, ../scss/styles.scss */
+/* line 143, ../scss/styles.scss */
 #match .info .center-info .scores-container .coopertition-icon {
   background-color: yellow;
   width: 70px;
@@ -165,4 +164,42 @@ body {
   bottom: 0;
   left: 50%;
   margin-left: -35px;
+}
+
+/* line 159, ../scss/styles.scss */
+#rankings .prototype {
+  display: none;
+}
+/* line 163, ../scss/styles.scss */
+#rankings table {
+  width: 100%;
+  font-weight: bold;
+  font-family: Arial;
+  text-align: center;
+  font-size: 1.6vw;
+  background-color: white;
+  border-spacing: 0;
+}
+/* line 172, ../scss/styles.scss */
+#rankings table td {
+  padding: 10px;
+  border-bottom: 1px solid #999;
+}
+/* line 177, ../scss/styles.scss */
+#rankings table tr:nth-child(odd) td {
+  background-color: #eee;
+}
+/* line 180, ../scss/styles.scss */
+#rankings table tr:nth-child(even) td {
+  background-color: white;
+}
+/* line 184, ../scss/styles.scss */
+#rankings table thead td {
+  z-index: 2;
+  position: relative;
+}
+/* line 188, ../scss/styles.scss */
+#rankings table tbody td {
+  z-index: 1;
+  position: relative;
 }
