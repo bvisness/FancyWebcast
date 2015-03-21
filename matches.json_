@@ -1,0 +1,28 @@
+[
+	{
+		"comp_level": "f", 
+		"match_number": 1, 
+		"videos": [
+			{
+				"type": "youtube", 
+				"key": "i9-eH3Iym38"
+			}
+		], 
+		"set_number": 1, 
+		"time_string": "1:48 PM", 
+		"key": "2014arc_f1m1", 
+		"time": 1398538080, 
+		"score_breakdown": null, 
+		"alliances": {
+			"blue": {
+				"score": 170, 
+				"teams": ["frc175", "frc33", "frc27"]
+			}, 
+			"red": {
+				"score": 186, 
+				"teams": ["frc1477", "frc2590", "frc1625"]
+			}
+		}, 
+		"event_key": "2014arc"
+	}
+]
