@@ -13,6 +13,7 @@ var WARNING_LENGTH = 30;
 var MATCH_LENGTH = AUTO_LENGTH + TELEOP_LENGTH;
 
 var theMatch;
+var theRankings;
 
 $(document).ready(function() {
 	setInterval(function() { readFile("match.json", matchResponder); }, 1000);
@@ -39,13 +40,31 @@ function matchResponder() {
 	else
 		$('#coop').hide();
 
-	$('#red-teams .team-number').each(function(i) {
+	$('#red-teams .team').each(function(i) {
 		var team = theMatch.alliances.red.teams[i];
-		$(this).text(team.substring(3, team.length));
+		var niceTeam = team.substring(3, team.length);
+		var rank = "??";
+		for (var i = 1; i < theRankings.length; i++) {
+			if (theRankings[i].number == niceTeam) {
+				rank = i;
+				break;
+			}
+		}
+		$(this).find('.team-number').text(niceTeam);
+		$(this).find('.team-rank').text(rank);
 	});
-	$('#blue-teams .team-number').each(function(i) {
+	$('#blue-teams .team').each(function(i) {
 		var team = theMatch.alliances.blue.teams[i];
-		$(this).text(team.substring(3, team.length));
+		var niceTeam = team.substring(3, team.length);
+		var rank = "??";
+		for (var i = 1; i < theRankings.length; i++) {
+			if (theRankings[i].number == niceTeam) {
+				rank = i;
+				break;
+			}
+		}
+		$(this).find('.team-number').text(niceTeam);
+		$(this).find('.team-rank').text(rank);
 	});
 
 	$('#match_number').text(theMatch.match_number);
@@ -84,8 +103,8 @@ function viewResponder() {
 }
 
 function rankingsResponder() {
-	var rankings = $.parseJSON(this.responseText);
-	updateRankings(rankings);
+	theRankings = $.parseJSON(this.responseText);
+	updateRankings(theRankings);
 }
 
 function updateTimer() {
