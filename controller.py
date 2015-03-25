@@ -53,6 +53,28 @@ def main():
 
     loadConfig()
 
+    while True:
+        print "Welcome to our fancy webcast software!"
+
+        print "\nAvailable commands:"
+        print "new\t- Creates or loads a new match"
+        print "r\t- Switches to rankings"
+        print "u\t- Switches to upcoming match view"
+
+        command = raw_input("Enter your command: ")
+
+        if command == "new":
+            mode = -1
+        elif command == "r":
+            mode = 6.1
+        elif command == "u":
+            mode = 5
+        else:
+            print "Unknown command."
+            continue
+
+        break
+
     # The available modes for this program are:
     # -1: Make new match
     # 0: Match ready
