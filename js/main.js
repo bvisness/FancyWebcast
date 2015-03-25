@@ -16,7 +16,7 @@ var theMatch;
 
 $(document).ready(function() {
 	setInterval(function() { readFile("match.json", matchResponder); }, 1000);
-	setInterval(function() { readFile("view.json", viewResponder); }, 1000)
+	setInterval(function() { readFile("view.json", viewResponder); }, 1000);
 	setInterval(function() { readFile("rankings.json", rankingsResponder); }, 1000);
 	setInterval(function() { updateTimer(); }, 50);
 });
@@ -79,8 +79,8 @@ function hideView(view) {
 
 function viewResponder() {
 	var view = $.parseJSON(this.responseText).view;
-	$( '.view' ).not( '#' + view ).each(function() { hideView(this) });
-	$( '#' + view ).each(function() { showView(this) });
+	$( '.view' ).not( '#' + view ).each(function() { hideView(this); });
+	$( '#' + view ).each(function() { showView(this); });
 }
 
 function rankingsResponder() {
@@ -110,7 +110,7 @@ function updateTimer() {
 		$('#timer').text(output);
 		
 		$('.timer-fill').css('width', ((MATCH_LENGTH - output) / MATCH_LENGTH) * 100 + "%");
-		if (output == 0)
+		if (output === 0)
 			$('.timer-fill').addClass('red');
 		else if (output <= WARNING_LENGTH)
 			$('.timer-fill').addClass('yellow');
