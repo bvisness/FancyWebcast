@@ -124,36 +124,113 @@ function updateTimer() {
 	}
 }
 
+var delayTimer;
+var scrollTimer;
+
 function updateRankings(rankings) {
-	$( '#rankings tbody tr' ).not( '.prototype' ).remove();
-	var prototype = $( '#rankings .ranking.prototype' );
-	for (var i = 1; i < rankings.length; i++) {
-		var newRanking = $( prototype ).clone();
-		// var newRankings = $( prototype ).clone().append( prototype );
+	if ( $('#rankings').hasClass('hidden') ) {
+		$('#rankings').removeClass('scrolling');
+		resetScroll();
+	}
+	if ( !($('#rankings').hasClass('scrolling')) ) {
+		$( '#rankings tbody tr' ).not( '.prototype' ).remove();
+		var prototype = $( '#rankings .ranking.prototype' );
+		for (var i = 1; i < rankings.length; i++) {
+			var newRanking = $( prototype ).clone();
+			// var newRankings = $( prototype ).clone().append( prototype );
 
-		var rank = i;
-		var teamNumber = rankings[i].number;
-		// var niceTeamNumber = teamNumber.substring(3, teamNumber.length);
-		var qualAvg = rankings[i].qualification_average;
-		var coop = rankings[i].coopertition_sum;
-		var auto = rankings[i].auto_sum;
-		var container = rankings[i].container_sum;
-		var tote = rankings[i].tote_sum;
-		var litter = rankings[i].litter_sum;
-		var played = rankings[i].played;
+			var rank = i;
+			var teamNumber = rankings[i].number;
+			// var niceTeamNumber = teamNumber.substring(3, teamNumber.length);
+			var qualAvg = rankings[i].qualification_average;
+			var coop = rankings[i].coopertition_sum;
+			var auto = rankings[i].auto_sum;
+			var container = rankings[i].container_sum;
+			var tote = rankings[i].tote_sum;
+			var litter = rankings[i].litter_sum;
+			var played = rankings[i].played;
 
-		$( newRanking ).find( '.rank' ).text(rank);
-		$( newRanking ).find( '.team' ).text(teamNumber);
-		$( newRanking ).find( '.qualification-average' ).text(qualAvg);
-		$( newRanking ).find( '.coopertition-sum' ).text(coop);
-		$( newRanking ).find( '.auto-sum' ).text(auto);
-		$( newRanking ).find( '.container-sum' ).text(container);
-		$( newRanking ).find( '.tote-sum' ).text(tote);
-		$( newRanking ).find( '.litter-sum' ).text(litter);
-		$( newRanking ).find( '.played' ).text(played);
+			$( newRanking ).find( '.rank' ).text(rank);
+			$( newRanking ).find( '.team' ).text(teamNumber);
+			$( newRanking ).find( '.qualification-average' ).text(qualAvg);
+			$( newRanking ).find( '.coopertition-sum' ).text(coop);
+			$( newRanking ).find( '.auto-sum' ).text(auto);
+			$( newRanking ).find( '.container-sum' ).text(container);
+			$( newRanking ).find( '.tote-sum' ).text(tote);
+			$( newRanking ).find( '.litter-sum' ).text(litter);
+			$( newRanking ).find( '.played' ).text(played);
 
-		$( newRanking ).removeClass('prototype');
+			$( newRanking ).removeClass('prototype');
 
-		$( '#rankings tbody' ).append( newRanking );
+			$( '#rankings tbody' ).append( newRanking );
+		}
+		scrollRankings();
+	}
+
+	function getRule() {
+		var ss = document.styleSheets[0];
+		var rules = ss.cssRules || ss.rules;
+		var tdRule = null;
+		for (var i = 0; i < rules.length; i++)
+		{
+			var rule = rules[i];
+			if (/\.scrolling.*\.rankcell$/.test(rule.selectorText))
+			{
+				tdRule = rule;
+				break;
+			}
+		}
+		return tdRule;
+	}
+
+	function resetScroll() {
+		var rule = getRule();
+		rule.style.transition = "";
+		rule.style.transform = "";
+		clearTimeout(delayTimer);
+		clearTimeout(scrollTimer);
+	}
+
+	function scrollRankings() {
+		// Delay before and after scrolling, in seconds
+		var SCROLL_DELAY = 4;
+		// Scroll speed in seconds per ranking
+		var RANKING_SPEED = 1;
+
+		var ss = document.styleSheets[0];
+		var rules = ss.cssRules || ss.rules;
+		var tdRule = null;
+		for (var i = 0; i < rules.length; i++)
+		{
+			var rule = rules[i];
+			if (/\.scrolling.*\.rankcell$/.test(rule.selectorText))
+			{
+				tdRule = rule;
+				break;
+			}
+		}
+
+		$( '#rankings' ).addClass('scrolling');
+
+		var numRankings = $('.ranking').not('.prototype').length;
+
+		var titleHeight = $('#rankings .header').height();
+		var windowHeight = $( '#rankings' ).height();
+		var visibleHeight = windowHeight - titleHeight;
+		var rankingHeight = $('#rankings tr').height();
+		var allHeight = rankingHeight * numRankings;
+		var scrollHeight = allHeight - visibleHeight;
+
+		var secondsPerPx = RANKING_SPEED / rankingHeight;
+		var scrollTime = secondsPerPx * scrollHeight;
+
+		delayTimer = setTimeout(function() {
+			tdRule.style.transition = "transform " + scrollTime + "s linear";
+			tdRule.style.transform = "translateY(" + -scrollHeight + "px)";
+			scrollTimer = setTimeout(function() {
+				$( '#rankings' ).removeClass('scrolling');
+				resetScroll();
+			}, (scrollTime + SCROLL_DELAY) * 1000);
+		}, SCROLL_DELAY * 1000);
 	}
 }

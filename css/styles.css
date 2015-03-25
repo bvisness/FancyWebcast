@@ -199,7 +199,11 @@ body {
   position: relative;
 }
 /* line 188, ../scss/styles.scss */
-#rankings table tbody td {
+#rankings table .rankcell {
   z-index: 1;
   position: relative;
+}
+/* line 195, ../scss/styles.scss */
+#rankings.scrolling .rankcell {
+  letter-spacing: auto;
 }

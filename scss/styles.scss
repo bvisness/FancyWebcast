@@ -185,10 +185,14 @@ body {
 			z-index: 2;
 			position: relative;
 		}
-		tbody td {
+		.rankcell {
 			// To scroll results, set transform: translateY() in this rule.
 			z-index: 1;
 			position: relative;
 		}
+	}
+
+	&.scrolling .rankcell {
+		letter-spacing: auto;
 	}
 }
