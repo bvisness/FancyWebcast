@@ -95,82 +95,98 @@ body {
   right: 0;
 }
 /* line 87, ../scss/styles.scss */
-#match .info .center-info {
-  width: 63.00578%;
-  text-align: center;
+#match .info .score-container {
+  width: 1060px;
+  height: 165px;
   font-size: 0;
-}
-/* line 92, ../scss/styles.scss */
-#match .info .center-info #red-teams, #match .info .center-info #blue-teams {
+  font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+  overflow: hidden;
   display: inline-block;
   vertical-align: top;
-  width: 27.98165%;
-  height: 100%;
 }
-/* line 98, ../scss/styles.scss */
-#match .info .center-info #red-teams .team-number, #match .info .center-info #red-teams .team-rank, #match .info .center-info #blue-teams .team-number, #match .info .center-info #blue-teams .team-rank {
-  border: 2px solid black;
-  border-radius: 5px;
-  box-sizing: border-box;
+/* line 102, ../scss/styles.scss */
+#match .info .score-container > div {
   display: inline-block;
   vertical-align: top;
-  font-size: 20px;
-  padding: 2px 10px;
 }
 /* line 107, ../scss/styles.scss */
-#match .info .center-info #red-teams .team-number, #match .info .center-info #blue-teams .team-number {
-  text-align: left;
-  background-color: #66dd66;
-  width: 53.57143%;
+#match .info .score-container .red-teams, #match .info .score-container .blue-teams {
+  width: 230px;
+  height: 165px;
+  background-color: #bababa;
+  box-shadow: inset 0px 0px 10px 0px rgba(50, 50, 50, 0.25);
+  font-size: 32px;
 }
-/* line 112, ../scss/styles.scss */
-#match .info .center-info #red-teams .team-rank, #match .info .center-info #blue-teams .team-rank {
+/* line 114, ../scss/styles.scss */
+#match .info .score-container .red-teams .team, #match .info .score-container .blue-teams .team {
+  width: 230px;
+  height: 55px;
   text-align: center;
-  background-color: #ddd;
-  width: 46.42857%;
-}
-/* line 119, ../scss/styles.scss */
-#match .info .center-info .scores-container {
-  width: 44.0367%;
-  height: 100%;
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  position: relative;
-}
-/* line 127, ../scss/styles.scss */
-#match .info .center-info .scores-container .score {
-  width: 50%;
-  height: 100%;
-  display: inline-block;
-  font-size: 4vw;
-  padding: 30px 20px;
+  font-size: 0;
   box-sizing: border-box;
 }
-/* line 135, ../scss/styles.scss */
-#match .info .center-info .scores-container .score.red {
-  background-color: red;
+/* line 121, ../scss/styles.scss */
+#match .info .score-container .red-teams .team:nth-child(n + 2), #match .info .score-container .blue-teams .team:nth-child(n + 2) {
+  border-top: 1px solid #999999;
 }
-/* line 138, ../scss/styles.scss */
-#match .info .center-info .scores-container .score.blue {
-  background-color: blue;
+/* line 125, ../scss/styles.scss */
+#match .info .score-container .red-teams .team > div, #match .info .score-container .blue-teams .team > div {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 32px;
+  line-height: 55px;
+  box-sizing: border-box;
 }
-/* line 143, ../scss/styles.scss */
-#match .info .center-info .scores-container .coopertition-icon {
-  background-color: yellow;
-  width: 70px;
-  height: 40px;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: -35px;
+/* line 133, ../scss/styles.scss */
+#match .info .score-container .red-teams .team .team-number, #match .info .score-container .blue-teams .team .team-number {
+  width: 64%;
+  color: #444;
+}
+/* line 137, ../scss/styles.scss */
+#match .info .score-container .red-teams .team .team-number:nth-of-type(1), #match .info .score-container .blue-teams .team .team-number:nth-of-type(1) {
+  border-right: 1px solid #999999;
+}
+/* line 140, ../scss/styles.scss */
+#match .info .score-container .red-teams .team .team-number:nth-of-type(2), #match .info .score-container .blue-teams .team .team-number:nth-of-type(2) {
+  border-left: 1px solid #999999;
+}
+/* line 144, ../scss/styles.scss */
+#match .info .score-container .red-teams .team .team-rank, #match .info .score-container .blue-teams .team .team-rank {
+  width: 36%;
+  color: #666;
+}
+/* line 150, ../scss/styles.scss */
+#match .info .score-container .red-score, #match .info .score-container .blue-score {
+  width: 300px;
+  height: 165px;
+  font-size: 100px;
+  text-align: center;
+  line-height: 165px;
+}
+/* line 158, ../scss/styles.scss */
+#match .info .score-container .red-score {
+  background-color: #f16567;
+}
+/* line 161, ../scss/styles.scss */
+#match .info .score-container .blue-score {
+  background-color: #7291ca;
+}
+/* line 165, ../scss/styles.scss */
+#match .info .score-container .red-teams {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+/* line 169, ../scss/styles.scss */
+#match .info .score-container .blue-teams {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
-/* line 159, ../scss/styles.scss */
+/* line 179, ../scss/styles.scss */
 #rankings .prototype {
   display: none;
 }
-/* line 163, ../scss/styles.scss */
+/* line 183, ../scss/styles.scss */
 #rankings table {
   width: 100%;
   font-weight: bold;
@@ -180,30 +196,30 @@ body {
   background-color: white;
   border-spacing: 0;
 }
-/* line 172, ../scss/styles.scss */
+/* line 192, ../scss/styles.scss */
 #rankings table td {
   padding: 10px;
   border-bottom: 1px solid #999;
 }
-/* line 177, ../scss/styles.scss */
+/* line 197, ../scss/styles.scss */
 #rankings table tr:nth-child(odd) td {
   background-color: #eee;
 }
-/* line 180, ../scss/styles.scss */
+/* line 200, ../scss/styles.scss */
 #rankings table tr:nth-child(even) td {
   background-color: white;
 }
-/* line 184, ../scss/styles.scss */
+/* line 204, ../scss/styles.scss */
 #rankings table thead td {
   z-index: 2;
   position: relative;
 }
-/* line 188, ../scss/styles.scss */
+/* line 208, ../scss/styles.scss */
 #rankings table .rankcell {
   z-index: 1;
   position: relative;
 }
-/* line 195, ../scss/styles.scss */
+/* line 215, ../scss/styles.scss */
 #rankings.scrolling .rankcell {
   letter-spacing: auto;
 }
