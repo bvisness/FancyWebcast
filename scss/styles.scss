@@ -89,6 +89,7 @@ body {
 			$teams-width: 230px;
 			$teams-border: 1px solid #999;
 			$height: 165px;
+			$coop-height: 15px;
 
 			width: 2 * $score-width + 2 * $teams-width;
 			height: $height;
@@ -147,12 +148,46 @@ body {
 					}
 				}
 			}
-			.red-score, .blue-score {
-				width: $score-width;
+			.scores {
+				width: $score-width * 2;
 				height: $height;
-				font-size: 100px;
-				text-align: center;
-				line-height: $height;
+				font-size: 0;
+				position: relative;
+
+				& > div {
+					display: inline-block;
+					vertical-align: top;
+				}
+
+				.red-score, .blue-score {
+					width: $score-width;
+					height: $height;
+					font-size: 100px;
+					text-align: center;
+					line-height: $height;
+
+					transition: all 0.5s ease;
+				}
+				.coop {
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					height: 0;
+					background-color: yellow;
+
+					transition: height 0.5s ease;
+				}
+
+				&.coop {
+					.red-score, .blue-score {
+						height: $height - $coop-height;
+						line-height: $height - $coop-height;
+					}
+					.coop {
+						height: $coop-height;
+					}
+				}
 			}
 
 			.red-score {

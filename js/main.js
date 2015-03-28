@@ -36,9 +36,9 @@ function matchResponder() {
 	$('#blue').text(theMatch.alliances.blue.score);
 
 	if (theMatch.coopertition_achieved)
-		$('#coop').show();
+		$('#scores').addClass('coop');
 	else
-		$('#coop').hide();
+		$('#scores').removeClass('coop');
 
 	$('#red-teams .team').each(function(i) {
 		var team = theMatch.alliances.red.teams[i];
