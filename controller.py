@@ -2,6 +2,7 @@
 
 from time import time, strftime, sleep
 import json
+import urllib2
 import match
 import matches
 import rankings
@@ -101,8 +102,13 @@ def main():
             command = raw_input("Load match from online? (y / n): ")
 
             if command == "y":
-                match_name = raw_input('Enter the tag for this match (e.g. "qm1" or "f2"): ')
-                current_match = match.getLiveMatchFromOnline(CONFIG['event']['name'], match_name)
+                while True:
+                    try:
+                        match_name = raw_input('Enter the tag for this match (e.g. "qm1" or "f1m2"): ')
+                        current_match = match.getLiveMatchFromOnline(CONFIG['event']['name'], match_name)
+                        break
+                    except urllib2.HTTPError, e:
+                        print "Could not load that match."
             else:
                 print "Entering the match manually."
                 try:
