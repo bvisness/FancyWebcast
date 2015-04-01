@@ -12,8 +12,20 @@ body {
 }
 
 #match {
+	$timer-height: 55px;
+	$info-padding: 20px;
+	$score-width: 300px;
+	$teams-width: 230px;
+	$teams-border: 1px solid #999;
+	$score-height: 165px;
+	$coop-height: 15px;
+
+	$info-height: $score-height + (2 * $info-padding);
+	$score-container-width: 2 * $score-width + 2 * $teams-width;
+	$side-info-width: ((1920px - $score-container-width) / 2) - (2 * $info-padding);
+
 	.container {
-		height: (145px / 650px) * 100%;
+		height: $info-height + $timer-height;
 		position: absolute;
 		left: 0; right: 0; bottom: 0;
 		background-color: #ddd;
@@ -21,24 +33,25 @@ body {
 	}
 
 	.timer-container {
-		height: (40px / 145px) * 100%;
+		height: $timer-height;
 		position: absolute;
 		top: 0; left: 0; right: 0;
 		background-color: #ccc;
-		font-size: 32px;
+		font-size: 40px;
 		text-align: center;
+		overflow: hidden;
 
 		#timer {
 			width: 8%;
 			margin-left: auto;
 			margin-right: auto;
 			height: 100%;
-			background-color: white;
-			border: 5px solid black;
+			background-color: rgba(255,255,255,0.7);
+			box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.5);
 			box-sizing: border-box;
-			border-radius: 6px;
 			position: relative;
 			z-index: 2;
+			line-height: $timer-height;
 		}
 
 		.timer-fill {
@@ -47,7 +60,7 @@ body {
 			top: 0;
 			bottom: 0;
 			width: 0;
-			background-color: #2CE88B;
+			background-color: #23C575;
 			border-radius: 0 999px 999px 0;
 			z-index: 1;
 
@@ -62,10 +75,10 @@ body {
 	}
 
 	.info {
-		height: (105px / 145px) * 100%;
+		height: $score-height + (2 * $info-padding);
 		position: absolute;
 		bottom: 0; left: 0; right: 0;
-		padding: 10px;
+		padding: $info-padding;
 		box-sizing: border-box;
 		font-size: 0;
 
@@ -77,28 +90,49 @@ body {
 		}
 
 		.left-info {
-			width: (160px / 865px) * 100%;
-			left: 0;
+			width: $side-info-width;
+			height: $score-height;
+			position: absolute;
+			left: $info-padding;
+			top: $info-padding;
+
+			img {
+				max-height: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+			}
 		}
 		.right-info {
-			width: (160px / 865px) * 100%;
-			right: 0;
+			width: $side-info-width;
+			height: $score-height;
+			position: absolute;
+			right: $info-padding;
+			top: $info-padding;
+
+			img {
+				height: 110px;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+			}
+			h2 {
+				text-align: center;
+			}
 		}
 		.score-container {
-			$score-width: 300px;
-			$teams-width: 230px;
-			$teams-border: 1px solid #999;
-			$height: 165px;
-			$coop-height: 15px;
 
-			width: 2 * $score-width + 2 * $teams-width;
-			height: $height;
+			width: $score-container-width;
+			height: $score-height;
 			font-size: 0;
 			font-family: "Arial Rounded MT Bold", Arial, sans-serif;
 			overflow: hidden;
 
-			display: inline-block;
-			vertical-align: top;
+			position: absolute;
+			left: 50%;
+			top: $info-padding;
+			margin-left: -1 * ($teams-width + $score-width);
+
 
 			& > div {
 				display: inline-block;
@@ -107,14 +141,14 @@ body {
 
 			.red-teams, .blue-teams {
 				width: $teams-width;
-				height: $height;
+				height: $score-height;
 				background-color: #bababa;
 				box-shadow: inset 0px 0px 10px 0px rgba(50, 50, 50, 0.25);
 				font-size: 32px;
 
 				.team {
 					width: $teams-width;
-					height: $height / 3;
+					height: $score-height / 3;
 					text-align: center;
 					font-size: 0;
 					box-sizing: border-box;
@@ -127,7 +161,7 @@ body {
 						display: inline-block;
 						vertical-align: top;
 						font-size: 32px;
-						line-height: $height / 3;
+						line-height: $score-height / 3;
 						box-sizing: border-box;
 					}
 
@@ -150,7 +184,7 @@ body {
 			}
 			.scores {
 				width: $score-width * 2;
-				height: $height;
+				height: $score-height;
 				font-size: 0;
 				position: relative;
 
@@ -161,10 +195,10 @@ body {
 
 				.red-score, .blue-score {
 					width: $score-width;
-					height: $height;
+					height: $score-height;
 					font-size: 100px;
 					text-align: center;
-					line-height: $height;
+					line-height: $score-height;
 
 					transition: all 0.5s ease;
 				}
@@ -181,8 +215,8 @@ body {
 
 				&.coop {
 					.red-score, .blue-score {
-						height: $height - $coop-height;
-						line-height: $height - $coop-height;
+						height: $score-height - $coop-height;
+						line-height: $score-height - $coop-height;
 					}
 					.coop {
 						height: $coop-height;

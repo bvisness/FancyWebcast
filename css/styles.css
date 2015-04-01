@@ -13,9 +13,9 @@ body {
   right: 0;
 }
 
-/* line 15, ../scss/styles.scss */
+/* line 27, ../scss/styles.scss */
 #match .container {
-  height: 22.30769%;
+  height: 260px;
   position: absolute;
   left: 0;
   right: 0;
@@ -23,93 +23,120 @@ body {
   background-color: #ddd;
   font-family: "Arial Rounded MT Bold", sans-serif;
 }
-/* line 23, ../scss/styles.scss */
+/* line 35, ../scss/styles.scss */
 #match .timer-container {
-  height: 27.58621%;
+  height: 55px;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   background-color: #ccc;
-  font-size: 32px;
+  font-size: 40px;
   text-align: center;
+  overflow: hidden;
 }
-/* line 31, ../scss/styles.scss */
+/* line 44, ../scss/styles.scss */
 #match .timer-container #timer {
   width: 8%;
   margin-left: auto;
   margin-right: auto;
   height: 100%;
-  background-color: white;
-  border: 5px solid black;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.5);
   box-sizing: border-box;
-  border-radius: 6px;
   position: relative;
   z-index: 2;
+  line-height: 55px;
 }
-/* line 44, ../scss/styles.scss */
+/* line 57, ../scss/styles.scss */
 #match .timer-container .timer-fill {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 0;
-  background-color: #2CE88B;
+  background-color: #23C575;
   border-radius: 0 999px 999px 0;
   z-index: 1;
 }
-/* line 54, ../scss/styles.scss */
+/* line 67, ../scss/styles.scss */
 #match .timer-container .timer-fill.yellow {
   background-color: yellow;
 }
-/* line 58, ../scss/styles.scss */
+/* line 71, ../scss/styles.scss */
 #match .timer-container .timer-fill.red {
   background-color: red;
 }
-/* line 64, ../scss/styles.scss */
+/* line 77, ../scss/styles.scss */
 #match .info {
-  height: 72.41379%;
+  height: 205px;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
   font-size: 0;
 }
-/* line 72, ../scss/styles.scss */
+/* line 85, ../scss/styles.scss */
 #match .info .left-info, #match .info .right-info, #match .info .center-info {
   height: 100%;
   display: inline-block;
   vertical-align: top;
   font-size: medium;
 }
-/* line 79, ../scss/styles.scss */
+/* line 92, ../scss/styles.scss */
 #match .info .left-info {
-  width: 18.49711%;
-  left: 0;
+  width: 390px;
+  height: 165px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 }
-/* line 83, ../scss/styles.scss */
+/* line 99, ../scss/styles.scss */
+#match .info .left-info img {
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+/* line 106, ../scss/styles.scss */
 #match .info .right-info {
-  width: 18.49711%;
-  right: 0;
+  width: 390px;
+  height: 165px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
-/* line 87, ../scss/styles.scss */
+/* line 113, ../scss/styles.scss */
+#match .info .right-info img {
+  height: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+/* line 119, ../scss/styles.scss */
+#match .info .right-info h2 {
+  text-align: center;
+}
+/* line 123, ../scss/styles.scss */
 #match .info .score-container {
   width: 1060px;
   height: 165px;
   font-size: 0;
   font-family: "Arial Rounded MT Bold", Arial, sans-serif;
   overflow: hidden;
-  display: inline-block;
-  vertical-align: top;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  margin-left: -530px;
 }
-/* line 102, ../scss/styles.scss */
+/* line 137, ../scss/styles.scss */
 #match .info .score-container > div {
   display: inline-block;
   vertical-align: top;
 }
-/* line 107, ../scss/styles.scss */
+/* line 142, ../scss/styles.scss */
 #match .info .score-container .red-teams, #match .info .score-container .blue-teams {
   width: 230px;
   height: 165px;
@@ -117,7 +144,7 @@ body {
   box-shadow: inset 0px 0px 10px 0px rgba(50, 50, 50, 0.25);
   font-size: 32px;
 }
-/* line 114, ../scss/styles.scss */
+/* line 149, ../scss/styles.scss */
 #match .info .score-container .red-teams .team, #match .info .score-container .blue-teams .team {
   width: 230px;
   height: 55px;
@@ -125,11 +152,11 @@ body {
   font-size: 0;
   box-sizing: border-box;
 }
-/* line 121, ../scss/styles.scss */
+/* line 156, ../scss/styles.scss */
 #match .info .score-container .red-teams .team:nth-child(n + 2), #match .info .score-container .blue-teams .team:nth-child(n + 2) {
   border-top: 1px solid #999999;
 }
-/* line 125, ../scss/styles.scss */
+/* line 160, ../scss/styles.scss */
 #match .info .score-container .red-teams .team > div, #match .info .score-container .blue-teams .team > div {
   display: inline-block;
   vertical-align: top;
@@ -137,56 +164,88 @@ body {
   line-height: 55px;
   box-sizing: border-box;
 }
-/* line 133, ../scss/styles.scss */
+/* line 168, ../scss/styles.scss */
 #match .info .score-container .red-teams .team .team-number, #match .info .score-container .blue-teams .team .team-number {
   width: 64%;
   color: #444;
 }
-/* line 137, ../scss/styles.scss */
+/* line 172, ../scss/styles.scss */
 #match .info .score-container .red-teams .team .team-number:nth-of-type(1), #match .info .score-container .blue-teams .team .team-number:nth-of-type(1) {
   border-right: 1px solid #999999;
 }
-/* line 140, ../scss/styles.scss */
+/* line 175, ../scss/styles.scss */
 #match .info .score-container .red-teams .team .team-number:nth-of-type(2), #match .info .score-container .blue-teams .team .team-number:nth-of-type(2) {
   border-left: 1px solid #999999;
 }
-/* line 144, ../scss/styles.scss */
+/* line 179, ../scss/styles.scss */
 #match .info .score-container .red-teams .team .team-rank, #match .info .score-container .blue-teams .team .team-rank {
   width: 36%;
   color: #666;
 }
-/* line 150, ../scss/styles.scss */
-#match .info .score-container .red-score, #match .info .score-container .blue-score {
+/* line 185, ../scss/styles.scss */
+#match .info .score-container .scores {
+  width: 600px;
+  height: 165px;
+  font-size: 0;
+  position: relative;
+}
+/* line 191, ../scss/styles.scss */
+#match .info .score-container .scores > div {
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 196, ../scss/styles.scss */
+#match .info .score-container .scores .red-score, #match .info .score-container .scores .blue-score {
   width: 300px;
   height: 165px;
   font-size: 100px;
   text-align: center;
   line-height: 165px;
+  transition: all 0.5s ease;
 }
-/* line 158, ../scss/styles.scss */
+/* line 205, ../scss/styles.scss */
+#match .info .score-container .scores .coop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background-color: yellow;
+  transition: height 0.5s ease;
+}
+/* line 217, ../scss/styles.scss */
+#match .info .score-container .scores.coop .red-score, #match .info .score-container .scores.coop .blue-score {
+  height: 150px;
+  line-height: 150px;
+}
+/* line 221, ../scss/styles.scss */
+#match .info .score-container .scores.coop .coop {
+  height: 15px;
+}
+/* line 227, ../scss/styles.scss */
 #match .info .score-container .red-score {
   background-color: #f16567;
 }
-/* line 161, ../scss/styles.scss */
+/* line 230, ../scss/styles.scss */
 #match .info .score-container .blue-score {
   background-color: #7291ca;
 }
-/* line 165, ../scss/styles.scss */
+/* line 234, ../scss/styles.scss */
 #match .info .score-container .red-teams {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
-/* line 169, ../scss/styles.scss */
+/* line 238, ../scss/styles.scss */
 #match .info .score-container .blue-teams {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
-/* line 179, ../scss/styles.scss */
+/* line 248, ../scss/styles.scss */
 #rankings .prototype {
   display: none;
 }
-/* line 183, ../scss/styles.scss */
+/* line 252, ../scss/styles.scss */
 #rankings table {
   width: 100%;
   font-weight: bold;
@@ -196,30 +255,30 @@ body {
   background-color: white;
   border-spacing: 0;
 }
-/* line 192, ../scss/styles.scss */
+/* line 261, ../scss/styles.scss */
 #rankings table td {
   padding: 10px;
   border-bottom: 1px solid #999;
 }
-/* line 197, ../scss/styles.scss */
+/* line 266, ../scss/styles.scss */
 #rankings table tr:nth-child(odd) td {
   background-color: #eee;
 }
-/* line 200, ../scss/styles.scss */
+/* line 269, ../scss/styles.scss */
 #rankings table tr:nth-child(even) td {
   background-color: white;
 }
-/* line 204, ../scss/styles.scss */
+/* line 273, ../scss/styles.scss */
 #rankings table thead td {
   z-index: 2;
   position: relative;
 }
-/* line 208, ../scss/styles.scss */
+/* line 277, ../scss/styles.scss */
 #rankings table .rankcell {
   z-index: 1;
   position: relative;
 }
-/* line 215, ../scss/styles.scss */
+/* line 284, ../scss/styles.scss */
 #rankings.scrolling .rankcell {
   letter-spacing: auto;
 }
