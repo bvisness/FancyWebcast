@@ -60,7 +60,7 @@ def main():
         print "\nAvailable commands:"
         print "new\t- Creates or loads a new match"
         print "r\t- Switches to rankings"
-        print "u\t- Switches to upcoming match view"
+        print "u\t- Switches to upcoming match view (not yet implemented)"
 
         command = raw_input("Enter your command: ")
 
@@ -134,7 +134,7 @@ def main():
             print "start\t- Starts the match"
             print "new\t- Creates or loads a new match"
             print "r\t- Switches to rankings"
-            print "u\t- Switches to upcoming match view"
+            print "u\t- Switches to upcoming match view (not yet implemented)"
 
             command = raw_input("Enter your command: ")
 
@@ -210,7 +210,7 @@ def main():
             print match.liveMatchStr(current_match)
 
             print "\nAvailable commands:"
-            print "f\t- Enter final score"
+            print "f\t- Show final score (show using OBS)"
             print "r\t- Switches to post-match rankings"
 
             command = raw_input("Enter your command: ")
@@ -226,38 +226,38 @@ def main():
 
             #TODO PUT IN COOPERTITION!
 
-            ra = int(raw_input("Red auto: "))
-            rt = int(raw_input("Red tote: "))
-            rc = int(raw_input("Red container: "))
-            rl = int(raw_input("Red litter: "))
-            rf = abs(int(raw_input("Red foul: "))) * -1
-            rtot = int(raw_input("Red total score: "))
+            # ra = int(raw_input("Red auto: "))
+            # rt = int(raw_input("Red tote: "))
+            # rc = int(raw_input("Red container: "))
+            # rl = int(raw_input("Red litter: "))
+            # rf = abs(int(raw_input("Red foul: "))) * -1
+            # rtot = int(raw_input("Red total score: "))
 
-            ba = int(raw_input("Blue auto: "))
-            bt = int(raw_input("Blue tote: "))
-            bc = int(raw_input("Blue container: "))
-            bl = int(raw_input("Blue litter: "))
-            bf = abs(int(raw_input("Blue foul: "))) * -1
-            btot = int(raw_input("Blue total score: "))
+            # ba = int(raw_input("Blue auto: "))
+            # bt = int(raw_input("Blue tote: "))
+            # bc = int(raw_input("Blue container: "))
+            # bl = int(raw_input("Blue litter: "))
+            # bf = abs(int(raw_input("Blue foul: "))) * -1
+            # btot = int(raw_input("Blue total score: "))
 
-            current_match['alliances']['red']['score'] = rtot
-            current_match['alliances']['blue']['score'] = btot
-            current_match['alliances']['red']['score_breakdown'] = {
-                'auto': ra,
-                'tote': rt,
-                'container': rc,
-                'litter': rl,
-                'foul': rf,
-            }
-            current_match['alliances']['blue']['score_breakdown'] = {
-                'auto': ba,
-                'tote': bt,
-                'container': bc,
-                'litter': bl,
-                'foul': bf,
-            }
+            # current_match['alliances']['red']['score'] = rtot
+            # current_match['alliances']['blue']['score'] = btot
+            # current_match['alliances']['red']['score_breakdown'] = {
+            #     'auto': ra,
+            #     'tote': rt,
+            #     'container': rc,
+            #     'litter': rl,
+            #     'foul': rf,
+            # }
+            # current_match['alliances']['blue']['score_breakdown'] = {
+            #     'auto': ba,
+            #     'tote': bt,
+            #     'container': bc,
+            #     'litter': bl,
+            #     'foul': bf,
+            # }
 
-            matches.addMatchToMatches(current_match, all_matches)
+            # matches.addMatchToMatches(current_match, all_matches)
 
             mode = 4
         elif mode == 3:
@@ -268,7 +268,7 @@ def main():
             print "\nAvailable commands:"
             print "new\t- Creates or loads a new match"
             print "r\t- Switches to rankings"
-            print "u\t- Switches to upcoming match view"
+            print "u\t- Switches to upcoming match view (not yet implemented)"
 
             command = raw_input("Enter your command: ")
 
@@ -291,7 +291,7 @@ def main():
             print "\nAvailable commands:"
             print "new\t- Creates or loads a new match"
             print "r\t- Switches to rankings"
-            print "u\t- Switches to upcoming match view"
+            print "u\t- Switches to upcoming match view (not yet implemented)"
 
             command = raw_input("Enter your command: ")
 
@@ -308,7 +308,7 @@ def main():
 
             writeView("upcoming")
 
-            print "Now displaying upcoming match view."
+            print "Now displaying upcoming match view. This is completely blank right now."
             # Display match info here
 
             print "\nAvailable commands:"
@@ -335,7 +335,7 @@ def main():
 
             print "\nAvailable commands:"
             print "new\t- Creates or loads a new match"
-            print "u\t- Switches to upcoming match view"
+            print "u\t- Switches to upcoming match view (not yet implemented)"
 
             command = raw_input("Enter your command: ")
 
@@ -356,7 +356,7 @@ def main():
             print "Now displaying post-match rankings."
 
             print "\nAvailable commands:"
-            print "f\t- Enters final match scores"
+            print "f\t- Show final match scores (show using OBS)"
 
             command = raw_input("Enter your command: ")
 
